@@ -1,6 +1,7 @@
 # simple-cms
 # Command for run:
-docker-compose up --build
+docker-compose up --build (this is for V1)
+docker compose up (this is for V2)
 
 Then open http://localhost:3000 in a browser.
 Default admin user: username admin, password admin (only stored as hash in SQLite, never returned by the API).
