@@ -34,3 +34,5 @@ Docker Compose documentation (multi-container setup)
 https://docs.docker.com/compose/
 
 Create test branch
+
+https://medium.com/@opeoluwaakinsiku2017/launch-an-amazon-ec2-instance-using-terraform-2024-7cdb0e8d8b1e
