@@ -1,5 +1,8 @@
 # simple-cms
 # Command for run:
+#first run
+minikube start
+
 docker-compose up --build (this is for V1)
 
 docker compose up (this is for V2)
