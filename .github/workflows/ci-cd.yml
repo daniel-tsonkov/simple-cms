@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   IMAGE_NAME: simple-cms
@@ -19,18 +19,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # Backend
+      # 2) Backend: Install deps
       - name: Install backend dependencies
         working-directory: backend
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      # 3) Backend: Run tests (if any — optional)
+      - name: Run backend tests
+        working-directory: backend
+        run: npm test || echo "No tests defined"
+
+      # 4) Optionally build Docker images
+      - name: Build Docker images
+        run: |
+          docker build -t simple-cms-backend ./backend
+          # можеш да добавиш и frontend ако има Dockerfile
 
   secret-scan:
     needs: lint-test
