@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js",
-        "build": "echo 'No build step needed for this project'"
+        "start": "node src/index.js",
+        "build": "echo 'No build step needed'"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
