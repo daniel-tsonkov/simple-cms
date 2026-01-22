@@ -25,12 +25,12 @@ jobs:
           node-version: '18'
 
       # Backend
-      #- name: Install backend dependencies
-      #  working-directory: backend
-      #  run: npm install
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm install
 
-      #- name: Run tests
-      #  run: npm test
+      - name: Run tests
+        run: npm test
 
   secret-scan:
     needs: lint-test
