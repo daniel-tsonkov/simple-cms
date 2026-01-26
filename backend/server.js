@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const csrf = require('csurf');
+const cookieParser = require('cookie-parser');
 const promClient = require('prom-client');
 require('dotenv').config();
 
@@ -33,8 +35,32 @@ const activeConnections = new promClient.Gauge({
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:8080',
+  credentials: true
+}));
 app.use(express.json());
+app.use(cookieParser());
+
+// CSRF Protection
+const csrfProtection = csrf({ 
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict'
+  }
+});
+
+// Apply CSRF protection to state-changing routes
+app.use('/api', csrfProtection);
+
+// Make CSRF token available
+app.use((req, res, next) => {
+  if (req.csrfToken) {
+    res.locals.csrfToken = req.csrfToken();
+  }
+  next();
+});
 
 // Metrics Middleware
 app.use((req, res, next) => {
@@ -57,6 +83,11 @@ app.use((req, res, next) => {
   });
   
   next();
+});
+
+// CSRF Token Endpoint (no CSRF protection needed for GET)
+app.get('/api/csrf-token', (req, res) => {
+  res.json({ csrfToken: req.csrfToken() });
 });
 
 // Health Check
@@ -104,10 +135,18 @@ app.post('/api/posts', (req, res) => {
 
 // Error handling
 app.use((err, req, res, _next) => {
+  // Handle CSRF token errors
+  if (err.code === 'EBADCSRFTOKEN') {
+    return res.status(403).json({ 
+      error: 'Invalid CSRF token',
+      message: 'Form submission validation failed'
+    });
+  }
+  
   console.error(err.stack);
   res.status(500).json({ 
     error: 'Internal Server Error',
-    message: err.message 
+    message: process.env.NODE_ENV === 'production' ? 'An error occurred' : err.message 
   });
 });
 
@@ -122,6 +161,7 @@ if (require.main === module) {
     console.log(`🚀 Backend server running on port ${PORT}`);
     console.log(`📊 Metrics available at http://localhost:${PORT}/metrics`);
     console.log(`💚 Health check at http://localhost:${PORT}/health`);
+    console.log(`🔒 CSRF protection enabled`);
   });
 }
 
