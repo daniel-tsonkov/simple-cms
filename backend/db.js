@@ -41,10 +41,11 @@ db.serialize(() => {
         ],
         (err2) => {
           if (err2) console.error("Error creating default admin:", err2);
-          else
+          else {
             console.log(
               "Created default admin user (username: admin, password: admin)"
             );
+          }
         }
       );
     }
