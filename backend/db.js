@@ -40,7 +40,7 @@ db.serialize(() => {
           hash,
         ],
         (err2) => {
-          if (err2) {console.error('Error creating default admin:', err2)}
+          if (err2) {console.error('Error creating default admin:', err2);}
           else {
             console.log(
               'Created default admin user (username: admin, password: adminn)'
