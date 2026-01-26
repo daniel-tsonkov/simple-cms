@@ -161,7 +161,7 @@ if (require.main === module) {
     console.log(`🚀 Backend server running on port ${PORT}`);
     console.log(`📊 Metrics available at http://localhost:${PORT}/metrics`);
     console.log(`💚 Health check at http://localhost:${PORT}/health`);
-    console.log(`🔒 CSRF protection enabled`);
+    console.log('🔒 CSRF protection enabled');
   });
 }
 
