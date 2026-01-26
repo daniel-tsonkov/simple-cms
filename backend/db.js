@@ -31,12 +31,12 @@ db.serialize(() => {
           (first_name, last_name, email, address, phone, username, password_hash)
          VALUES (?, ?, ?, ?, ?, ?, ?)`,
         [
-          "Admin",
-          "User",
-          "admin@example.com",
-          "Admin Street 1",
-          "0000000000",
-          "admin",
+          'Admin',
+          'User',
+          'admin@example.com',
+          'Admin Street 1',
+          '0000000000',
+          'admin',
           hash,
         ],
         (err2) => {
