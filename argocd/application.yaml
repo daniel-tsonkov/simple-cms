@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/daniel-tsonkov/simple-cms-gitops
+    repoURL: https://github.com/mtsonkova/simple-cms-gitops
     targetRevision: HEAD
     path: k8s
 

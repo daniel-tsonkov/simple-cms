@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/daniel-tsonkov/simple-cms-backend:latest
+          image: ghcr.io/mtsonkova/simple-cms-backend:latest
           imagePullPolicy: Always
           ports:
             - name: http
@@ -97,7 +97,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/daniel-tsonkov/simple-cms-frontend:latest
+          image: ghcr.io/mtsonkova/simple-cms-frontend:latest
           imagePullPolicy: Always
           ports:
             - name: http
