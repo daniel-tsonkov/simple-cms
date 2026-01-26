@@ -82,41 +82,76 @@ async function loadUsers() {
   }
 }
 
+// Helper function to safely create a table row
+function createUserRow(u, index) {
+  const tr = document.createElement("tr");
+
+  // Create and append cells with textContent (safe from XSS)
+  const tdIndex = document.createElement("td");
+  tdIndex.textContent = index + 1;
+  tr.appendChild(tdIndex);
+
+  const tdName = document.createElement("td");
+  tdName.textContent = `${u.first_name} ${u.last_name}`;
+  tr.appendChild(tdName);
+
+  const tdEmail = document.createElement("td");
+  tdEmail.textContent = u.email;
+  tr.appendChild(tdEmail);
+
+  const tdAddress = document.createElement("td");
+  tdAddress.textContent = u.address || "";
+  tr.appendChild(tdAddress);
+
+  const tdPhone = document.createElement("td");
+  tdPhone.textContent = u.phone || "";
+  tr.appendChild(tdPhone);
+
+  const tdUsername = document.createElement("td");
+  tdUsername.textContent = u.username;
+  tr.appendChild(tdUsername);
+
+  // Create actions cell with buttons
+  const tdActions = document.createElement("td");
+  tdActions.className = "text-end";
+
+  const editBtn = document.createElement("button");
+  editBtn.className = "btn btn-sm btn-outline-primary me-1";
+  editBtn.textContent = "Edit";
+  editBtn.addEventListener("click", () => {
+    fillFormForEdit(u);
+  });
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "btn btn-sm btn-outline-danger";
+  deleteBtn.textContent = "Delete";
+  deleteBtn.addEventListener("click", () => {
+    if (confirm("Delete this user?")) {
+      deleteUser(u.id);
+    }
+  });
+
+  tdActions.appendChild(editBtn);
+  tdActions.appendChild(deleteBtn);
+  tr.appendChild(tdActions);
+
+  return tr;
+}
+
 function renderUsers(users) {
   if (!users.length) {
     usersTableBody.innerHTML = '<tr><td colspan="7">No users yet</td></tr>';
     return;
   }
 
-  usersTableBody.innerHTML = "";
+  // Clear existing rows safely
+  while (usersTableBody.firstChild) {
+    usersTableBody.removeChild(usersTableBody.firstChild);
+  }
+
+  // Create and append rows using safe DOM methods
   users.forEach((u, index) => {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-      <td>${index + 1}</td>
-      <td>${u.first_name} ${u.last_name}</td>
-      <td>${u.email}</td>
-      <td>${u.address || ""}</td>
-      <td>${u.phone || ""}</td>
-      <td>${u.username}</td>
-      <td class="text-end">
-        <button class="btn btn-sm btn-outline-primary me-1">Edit</button>
-        <button class="btn btn-sm btn-outline-danger">Delete</button>
-      </td>
-    `;
-
-    const [editBtn, deleteBtn] = tr.querySelectorAll("button");
-
-    editBtn.addEventListener("click", () => {
-      fillFormForEdit(u);
-    });
-
-    deleteBtn.addEventListener("click", () => {
-      if (confirm("Delete this user?")) {
-        deleteUser(u.id);
-      }
-    });
-
+    const tr = createUserRow(u, index);
     usersTableBody.appendChild(tr);
   });
 }
