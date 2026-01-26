@@ -1,8 +1,8 @@
-const sqlite3 = require("sqlite3").verbose();
-const path = require("path");
-const bcrypt = require("bcryptjs");
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+const bcrypt = require('bcryptjs');
 
-const dbPath = path.join(__dirname, "cms.db");
+const dbPath = path.join(__dirname, 'cms.db');
 const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {
@@ -19,13 +19,13 @@ db.serialize(() => {
     )
   `);
 
-  db.get("SELECT COUNT(*) AS count FROM users", (err, row) => {
+  db.get('SELECT COUNT(*) AS count FROM users', (err, row) => {
     if (err) {
-      console.error("Error counting users:", err);
+      console.error('Error counting users:', err);
       return;
     }
     if (row.count === 0) {
-      const hash = bcrypt.hashSync("admin", 10);
+      const hash = bcrypt.hashSync('admin', 10);
       db.run(
         `INSERT INTO users
           (first_name, last_name, email, address, phone, username, password_hash)
@@ -40,10 +40,10 @@ db.serialize(() => {
           hash,
         ],
         (err2) => {
-          if (err2) console.error("Error creating default admin:", err2);
+          if (err2) {console.error('Error creating default admin:', err2)}
           else {
             console.log(
-              "Created default admin user (username: admin, password: admin)"
+              'Created default admin user (username: admin, password: adminn)'
             );
           }
         }
