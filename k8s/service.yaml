@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple_cms-backend
+  namespace: simple_cms
+  labels:
+    app: simple_cms
+    component: backend
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "3000"
+    prometheus.io/path: "/metrics"
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: simple_cms
+    component: backend
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple_cms-frontend
+  namespace: simple_cms
+  labels:
+    app: simple_cms
+    component: frontend
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: simple_cms
+    component: frontend

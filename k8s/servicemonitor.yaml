@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: simple_cms-backend
+  namespace: simple_cms
+  labels:
+    app: simple_cms
+    component: backend
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: simple_cms
+      component: backend
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+      - simple_cms
