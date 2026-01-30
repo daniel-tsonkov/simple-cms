@@ -268,8 +268,8 @@ jobs:
       - name: Update image tags
         run: |
           cd gitops/k8s
-          sed -i "s|image: ghcr.io/daniel-tsonkov/simple_cms-backend:.*|image: ghcr.io/daniel-tsonkov/simple_cms-backend:${{ github.sha }}|g" deployment.yaml
-          sed -i "s|image: ghcr.io/daniel-tsonkov/simple_cms-frontend:.*|image: ghcr.io/daniel-tsonkov/simple_cms-frontend:${{ github.sha }}|g" deployment.yaml
+          sed -i "s|image: ghcr.io/daniel-tsonkov/simple-cms-backend:.*|image: ghcr.io/daniel-tsonkov/simple-cms-backend:${{ github.sha }}|g" deployment.yaml
+          sed -i "s|image: ghcr.io/daniel-tsonkov/simple-cms-frontend:.*|image: ghcr.io/daniel-tsonkov/simple-cms-frontend:${{ github.sha }}|g" deployment.yaml
 
       - name: Commit and push changes
         run: |
@@ -293,7 +293,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Backend Image:** ghcr.io/daniel-tsonkov/simple_cms-backend:${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Frontend Image:** ghcr.io/daniel-tsonkov/simple_cms-frontend:${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Backend Image:** ghcr.io/daniel-tsonkov/simple-cms-backend:${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Frontend Image:** ghcr.io/daniel-tsonkov/simple-cms-frontend:${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✅ GitOps repository updated. ArgoCD will sync the changes." >> $GITHUB_STEP_SUMMARY

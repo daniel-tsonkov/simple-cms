@@ -19,7 +19,7 @@ output "prometheus_url" {
   value       = "Access Prometheus at: kubectl port-forward svc/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090"
 }
 
-output "simple_cms_namespace" {
+output "simple-cms_namespace" {
   description = "Simple CMS namespace"
-  value       = kubernetes_namespace.simple_cms.metadata[0].name
+  value       = kubernetes_namespace.simple-cms.metadata[0].name
 }

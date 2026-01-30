@@ -53,7 +53,7 @@
 **Navigate to GitHub Actions:**
 
 ```
-https://github.com/daniel-tsonkov/simple_cms/actions
+https://github.com/daniel-tsonkov/simple-cms/actions
 ```
 
 **Show Workflow File:**
@@ -93,7 +93,7 @@ cat .github/workflows/ci-cd.yml
 
    ```bash
    # Show images
-   docker images | grep simple_cms
+   docker images | grep simple-cms
    ```
 
 5. **Vulnerability Scan**
@@ -142,7 +142,7 @@ tree k8s/
 
 ```yaml
 # Point to image tag
-image: ghcr.io/daniel-tsonkov/simple_cms-backend:abc1234
+image: ghcr.io/daniel-tsonkov/simple-cms-backend:abc1234
 ```
 
 **Explain:**
@@ -173,7 +173,7 @@ https://localhost:8080
 
 **Show Application:**
 
-1. Click on `simple_cms` application
+1. Click on `simple-cms` application
 2. Show Application Tree
    - Namespace
    - Deployment (backend, frontend)
@@ -193,7 +193,7 @@ https://localhost:8080
 **Show Pods:**
 
 ```bash
-kubectl get pods -n simple_cms -w
+kubectl get pods -n simple-cms -w
 ```
 
 **Explain Rolling Update:**
@@ -203,10 +203,10 @@ kubectl get pods -n simple_cms -w
 **Verify Deployment:**
 
 ```bash
-kubectl get deployment -n simple_cms
+kubectl get deployment -n simple-cms
 # NAME                    READY   UP-TO-DATE   AVAILABLE
-# simple_cms-backend      3/3     3            3
-# simple_cms-frontend     2/2     2            2
+# simple-cms-backend      3/3     3            3
+# simple-cms-frontend     2/2     2            2
 ```
 
 ---
@@ -259,19 +259,19 @@ http://localhost:9090
 
 ```promql
 # Request rate
-rate(http_requests_total{namespace="simple_cms"}[5m])
+rate(http_requests_total{namespace="simple-cms"}[5m])
 
 # p95 latency
 histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
 
 # Pod status
-up{namespace="simple_cms"}
+up{namespace="simple-cms"}
 ```
 
 **Show Alerts:**
 
 ```bash
-kubectl get prometheusrule -n monitoring simple_cms-alerts -o yaml
+kubectl get prometheusrule -n monitoring simple-cms-alerts -o yaml
 ```
 
 > "Имаме alerts за high error rate, high latency, pod down, и др."
@@ -324,7 +324,7 @@ syncPolicy:
 
 ```bash
 # Manually scale deployment
-kubectl scale deployment simple_cms-backend -n simple_cms --replicas=5
+kubectl scale deployment simple-cms-backend -n simple-cms --replicas=5
 
 # Watch ArgoCD revert it back to 3
 # ArgoCD will detect drift and self-heal
@@ -470,7 +470,7 @@ http://localhost:3001
 http://localhost:9090
 
 # GitHub Actions
-https://github.com/daniel-tsonkov/simple_cms/actions
+https://github.com/daniel-tsonkov/simple-cms/actions
 
 # GitOps Repo
 https://github.com/daniel-tsonkov/simple-cms-gitops

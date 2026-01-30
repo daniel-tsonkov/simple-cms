@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simple-cms  # Changed from simple_cms to simple-cms
+  name: simple-cms  # Changed from simple-cms to simple-cms
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io

@@ -42,7 +42,7 @@
             ┌─────────────────────┐
             │  Kubernetes Cluster  │
             │  ┌────────────────┐  │
-            │  │  simple_cms    │  │
+            │  │  simple-cms    │  │
             │  │   namespace    │  │
             │  └────────────────┘  │
             └──────────┬───────────┘
@@ -91,14 +91,14 @@
 
 - **Repository**: `simple-cms-gitops`
 - **Sync Policy**: Automated (self-heal, prune)
-- **Target**: Kubernetes `simple_cms` namespace
+- **Target**: Kubernetes `simple-cms` namespace
 - **Deployment Strategy**: Rolling update
 
 ### 4. Infrastructure
 
 #### Kubernetes Resources
 
-- **Namespaces**: `simple_cms`, `argocd`, `monitoring`
+- **Namespaces**: `simple-cms`, `argocd`, `monitoring`
 - **Deployments**: Backend (3 replicas), Frontend (2 replicas)
 - **Services**: ClusterIP (backend), LoadBalancer (frontend)
 - **ServiceMonitor**: Prometheus scraping configuration

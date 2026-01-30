@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: simple_cms
+  name: simple-cms
   labels:
-    name: simple_cms
+    name: simple-cms
     environment: production
     managed-by: argocd

@@ -24,12 +24,12 @@ provider "helm" {
 }
 
 # Namespace
-resource "kubernetes_namespace" "simple_cms" {
+resource "kubernetes_namespace" "simple-cms" {
   metadata {
-    name = "simple_cms"
+    name = "simple-cms"
     
     labels = {
-      name        = "simple_cms"
+      name        = "simple-cms"
       environment = var.environment
       managed-by  = "terraform"
     }
@@ -106,7 +106,7 @@ resource "helm_release" "prometheus" {
 # ConfigMap for Grafana Dashboard
 resource "kubernetes_config_map" "grafana_dashboard" {
   metadata {
-    name      = "simple_cms-dashboard"
+    name      = "simple-cms-dashboard"
     namespace = kubernetes_namespace.monitoring.metadata[0].name
     
     labels = {
@@ -115,6 +115,6 @@ resource "kubernetes_config_map" "grafana_dashboard" {
   }
 
   data = {
-    "simple_cms-dashboard.json" = file("${path.module}/../../observability/grafana-dashboard.json")
+    "simple-cms-dashboard.json" = file("${path.module}/../../observability/grafana-dashboard.json")
   }
 }
