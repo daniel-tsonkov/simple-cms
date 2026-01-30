@@ -89,7 +89,7 @@
 
 ### 3. GitOps with ArgoCD
 
-- **Repository**: `simple_cms-gitops`
+- **Repository**: `simple-cms-gitops`
 - **Sync Policy**: Automated (self-heal, prune)
 - **Target**: Kubernetes `simple_cms` namespace
 - **Deployment Strategy**: Rolling update

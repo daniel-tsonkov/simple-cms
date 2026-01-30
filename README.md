@@ -99,7 +99,7 @@ Simple CMS is a demonstration project showcasing a complete DevOps pipeline with
            ▼
 ┌───────────────────────────────────┐
 │   GitOps Repository               │
-│   daniel-tsonkov/simple_cms-gitops     │
+│   daniel-tsonkov/simple-cms-gitops     │
 └──────────┬────────────────────────┘
            │
            ▼
@@ -253,7 +253,7 @@ Security is built into every layer:
 ## 📦 Related Repositories
 
 - **Application Repo**: [daniel-tsonkov/simple_cms](https://github.com/daniel-tsonkov/simple_cms)
-- **GitOps Repo**: [daniel-tsonkov/simple_cms-gitops](https://github.com/daniel-tsonkov/simple_cms-gitops)
+- **GitOps Repo**: [daniel-tsonkov/simple-cms-gitops](https://github.com/daniel-tsonkov/simple-cms-gitops)
 - **Original Repo**: [daniel-tsonkov/simple_cms](https://github.com/daniel-tsonkov/simple_cms)
 
 ## 🤝 Contributing
@@ -301,13 +301,13 @@ cd simple_cms
 
 # ============================================
 
-# On GitHub: Create new repository named "simple_cms-gitops"
+# On GitHub: Create new repository named "simple-cms-gitops"
 
 # Then run:
 
 cd ..
-git clone https://github.com/daniel-tsonkov/simple_cms-gitops.git
-cd simple_cms-gitops
+git clone https://github.com/daniel-tsonkov/simple-cms-gitops.git
+cd simple-cms-gitops
 
 # Copy k8s manifests from simple_cms
 

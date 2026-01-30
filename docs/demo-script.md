@@ -124,7 +124,7 @@ git push origin main
 **Navigate to GitOps Repo:**
 
 ```
-https://github.com/daniel-tsonkov/simple_cms-gitops
+https://github.com/daniel-tsonkov/simple-cms-gitops
 ```
 
 **Show Structure:**
@@ -343,7 +343,7 @@ kubectl scale deployment simple_cms-backend -n simple_cms --replicas=5
 > "С GitOps можем лесно да управляваме dev, staging, production environments"
 
 ```
-simple_cms-gitops/
+simple-cms-gitops/
 ├── dev/
 ├── staging/
 └── production/
@@ -473,7 +473,7 @@ http://localhost:9090
 https://github.com/daniel-tsonkov/simple_cms/actions
 
 # GitOps Repo
-https://github.com/daniel-tsonkov/simple_cms-gitops
+https://github.com/daniel-tsonkov/simple-cms-gitops
 ```
 
 **Good luck! 🚀**

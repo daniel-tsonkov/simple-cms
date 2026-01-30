@@ -146,9 +146,9 @@ kubectl port-forward svc/prometheus-kube-prometheus-prometheus -n monitoring 909
 ### 1. Create GitOps Repository
 
 ```bash
-# Create new repository on GitHub: simple_cms-gitops
-git clone https://github.com/YOUR_USERNAME/simple_cms-gitops.git
-cd simple_cms-gitops
+# Create new repository on GitHub: simple-cms-gitops
+git clone https://github.com/YOUR_USERNAME/simple-cms-gitops.git
+cd simple-cms-gitops
 
 # Copy k8s manifests
 mkdir k8s

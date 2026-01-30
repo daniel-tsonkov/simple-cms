@@ -260,7 +260,7 @@ jobs:
       - name: Checkout GitOps repo
         uses: actions/checkout@v4
         with:
-          repository: daniel-tsonkov/simple_cms-gitops
+          repository: daniel-tsonkov/simple-cms-gitops
           token: ${{ secrets.GITOPS_PAT || secrets.GITHUB_TOKEN }}
           path: gitops
           fetch-depth: 1
